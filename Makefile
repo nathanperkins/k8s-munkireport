@@ -8,6 +8,7 @@ create:
 	$(MAKE) apply
 
 apply:
+# Apply ingress-nginx controller.
 	kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/kind/deploy.yaml
 	kubectl wait \
 		--for=condition=Ready \
@@ -27,14 +28,19 @@ apply:
 		--selector=app.kubernetes.io/component=controller \
 		--timeout=$(TIMEOUT)
 
+# Apply munkireport and mysql.
 	kubectl create namespace $(NAMESPACE) --dry-run=client -o yaml | kubectl apply -f -
-	kubectl apply --recursive --namespace=$(NAMESPACE) -f manifests/
+	kubectl apply --recursive --namespace=$(NAMESPACE) -f manifests/sql/
+	kubectl apply --recursive --namespace=$(NAMESPACE) -f manifests/munkireport/
 	kubectl wait \
 		--for=condition=Available \
 		deployment \
 		--namespace $(NAMESPACE) \
 		--all \
 		--timeout=$(TIMEOUT)
+
+# Apply ingress and any leftovers.
+	kubectl apply --recursive --namespace=$(NAMESPACE) -f manifests/
 
 destroy:
 	kind delete cluster --name $(CLUSTER_NAME)
