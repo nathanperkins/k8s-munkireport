@@ -3,6 +3,7 @@ NAMESPACE?=munkireport
 TIMEOUT=60s
 
 deploy:
+	cat kind-cluster.yaml.template | envsubst > kind-cluster.yaml
 	kind create cluster --name $(CLUSTER_NAME) --config=kind-cluster.yaml
 	kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/kind/deploy.yaml
 	kubectl wait \

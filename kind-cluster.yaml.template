@@ -16,5 +16,5 @@ nodes:
     hostPort: 443
     protocol: TCP
   extraMounts:
-  - hostPath: /Users/nathanperkins/mysql-data
+  - hostPath: $HOME/mysql-data
     containerPath: /mysql-data
