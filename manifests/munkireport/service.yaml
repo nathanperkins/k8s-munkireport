@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: munkireport
+spec:
+  selector:
+    app: munkireport
+  ports:
+    - protocol: TCP
+      targetPort: 80
+      port: 8080

@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: munkireport
+  labels:
+    app: munkireport
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: munkireport
+  template:
+    metadata:
+      labels:
+        app: munkireport
+    spec:
+      containers:
+      - name: munkireport
+        image: munkireport/munkireport-php:5.6.5
+        ports:
+        - name: http
+          containerPort: 80
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 500m
+            memory: 256Mi
+        env:
+        - name: AUTH_METHODS
+          value: NOAUTH
+        - name: AUTH_SECURE
+          value: "FALSE"
+        - name: CONNECTION_DRIVER
+          value: mysql
+        - name: CONNECTION_HOST
+          value: mysql
+        - name: CONNECTION_USERNAME
+          value: root
+        - name: CONNECTION_PASSWORD
+          value: password
