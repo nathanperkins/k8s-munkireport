@@ -26,12 +26,17 @@ deploy:
 
 	kubectl create namespace $(NAMESPACE)
 	kubectl apply --recursive --namespace=$(NAMESPACE) -f manifests/
+
+	$(MAKE) apply
 	kubectl wait \
 		--for=condition=Available \
 		deployment \
 		--namespace $(NAMESPACE) \
 		--all \
 		--timeout=$(TIMEOUT)
+
+apply:
+	kubectl apply --recursive --namespace=$(NAMESPACE) -f manifests/
 
 destroy:
 	kind delete cluster --name $(CLUSTER_NAME)
