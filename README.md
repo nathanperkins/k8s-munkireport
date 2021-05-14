@@ -14,6 +14,8 @@ educational purposes.
   make create
   ```
 
+1. [Visit your MunkiReport app](http://munkireport.localhost/).
+
 1. Destroy cluster.
 
   ```shell
