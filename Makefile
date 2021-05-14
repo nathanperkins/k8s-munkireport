@@ -35,3 +35,7 @@ deploy:
 
 destroy:
 	kind delete cluster --name $(CLUSTER_NAME)
+
+clean:
+	[[ -n $(HOME) ]]
+	rm -rf $(HOME)/mysql-data

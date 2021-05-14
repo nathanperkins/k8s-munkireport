@@ -10,14 +10,20 @@ educational purposes.
 
 1. Create cluster with nginx ingress and MunkiReport.
 
-  ```shell
-  make create
-  ```
+    ```shell
+    make create
+    ```
 
 1. [Visit your MunkiReport app](http://munkireport.localhost/).
 
 1. Destroy cluster.
 
-  ```shell
-  make destroy
-  ```
+    ```shell
+    make destroy
+    ```
+
+1. Delete database data.
+
+    ```shell
+    make clean
+    ```
