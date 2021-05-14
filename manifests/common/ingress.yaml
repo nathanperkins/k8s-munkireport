@@ -1,11 +1,11 @@
----
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: munkireport
+  name: ingress
 spec:
   rules:
-  - http:
+  - host: munkireport.localhost
+    http:
       paths:
       - path: /
         backend:

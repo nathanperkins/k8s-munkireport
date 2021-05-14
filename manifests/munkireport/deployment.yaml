@@ -33,6 +33,8 @@ spec:
           value: NOAUTH
         - name: AUTH_SECURE
           value: "FALSE"
+        - name: WEBHOST
+          value: munkireport.localhost
         - name: CONNECTION_DRIVER
           value: mysql
         - name: CONNECTION_HOST
