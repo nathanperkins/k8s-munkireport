@@ -14,6 +14,14 @@ educational purposes.
     make create
     ```
 
+1. If the previous command failed with a web adminission hook failure for nginx,
+apply MunkiReport again. You can also perform this step if you have a cluster
+created and you want to make adjustments to the MunkiReport deployment.
+
+    ```shell
+    make apply
+    ```
+
 1. [Visit your MunkiReport app](http://munkireport.localhost/).
 
 1. Destroy cluster.
