@@ -26,7 +26,7 @@ spec:
             cpu: 1000m
             memory: 1Gi
           requests:
-            cpu: 500m
+            cpu: 250m
             memory: 256Mi
         env:
         - name: MYSQL_ROOT_PASSWORD
@@ -34,9 +34,9 @@ spec:
         - name: MYSQL_DATABASE
           value: munkireport
         volumeMounts:
-        - name: mysql
+        - name: mysql-data
           mountPath: /var/lib/mysql
       volumes:
-      - name: mysql
+      - name: mysql-data
         hostPath:
           path: /mysql-data
